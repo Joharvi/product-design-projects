@@ -8,630 +8,10 @@
   <!-- Salesforce Brand fonts — Salesforce Sans + Avant Garde For Salesforce -->
   <link rel="stylesheet" href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/fonts.css">
 
+  <link rel="stylesheet" href="styles.css">
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
-
-  <style>
-    /* ============================================================
-       LAYER 1 — Salesforce brand primitives
-       Values transcribed from the project's src/tokens.css.
-       Only the night-relevant subset is declared here.
-    ============================================================ */
-    :root {
-      /* Brand ramp — src: --color-brand-* */
-      --color-brand-10:  #021c41;
-      --color-brand-20:  #032d60;
-      --color-brand-30:  #014486;
-      --color-brand-40:  #0b5cab;
-      --color-brand-50:  #0176d3;
-      --color-brand-60:  #1b96ff;
-      --color-brand-70:  #52aeff;
-      --color-brand-80:  #94cdff;
-      --color-brand-90:  #d8e6fe;
-      --color-brand-95:  #eef4ff;
-
-      /* Violet ramp */
-      --color-violet-60: #cb65ff;
-
-      /* Hot orange ramp */
-      --color-hot-orange-60: #ff5d2d;
-
-      /* Neutrals */
-      --color-white:     #ffffff;
-
-      /* Greens */
-      --color-green-80:  #91db8b;
-
-      /* Alpha whites — night fills, borders, overlays */
-      --color-alpha-white-5:  rgba(255,255,255,0.05);
-      --color-alpha-white-10: rgba(255,255,255,0.10);
-      --color-alpha-white-15: rgba(255,255,255,0.15);
-      --color-alpha-white-25: rgba(255,255,255,0.25);
-      --color-alpha-white-40: rgba(255,255,255,0.40);
-      --color-alpha-white-50: rgba(255,255,255,0.50);
-      --color-alpha-white-75: rgba(255,255,255,0.75);
-      --color-alpha-white-85: rgba(255,255,255,0.85);
-    }
-
-    /* ============================================================
-       LAYER 2 — Semantic aliases: Night theme
-       Re-maps the same alias names the Day theme uses, pointing
-       them to the dark Salesforce navy palette.
-    ============================================================ */
-    :root,
-    [data-theme='night'] {
-      /* -- color-background: Salesforce deep navy */
-      --color-background:   var(--color-brand-10);
-      /* -- color-surface-1: slightly lifted card surface */
-      --color-surface-1:    #061e44;
-      /* -- color-surface-2: modal / elevated surface */
-      --color-surface-2:    var(--color-brand-20);
-      /* -- color-surface-3: strong interactive fill */
-      --color-surface-3:    var(--color-brand-40);
-
-      /* -- color-border-1/2: alpha separators */
-      --color-border-1:     var(--color-alpha-white-10);
-      --color-border-2:     var(--color-alpha-white-15);
-      /* legacy alias used in component styles */
-      --color-border:       var(--color-border-1);
-
-      /* -- color-on-surface-1/2/3/4: ink ramp on dark navy */
-      --color-on-surface-1: var(--color-alpha-white-85);
-      --color-on-surface-2: var(--color-alpha-white-50);
-      --color-on-surface-3: var(--color-white);
-      --color-on-surface-4: var(--color-alpha-white-25);
-
-      /* -- color-fill-accent / color-brand: Cosmos brand blue */
-      --color-fill-accent:  var(--color-brand-60);
-      --color-brand:        var(--color-brand-60);
-      --color-brand-dark:   var(--color-brand-50);
-      --color-brand-glow:   rgba(27, 150, 255, 0.22);
-
-      /* -- color-border-focus: focus ring */
-      --color-border-focus: var(--color-brand-60);
-
-      /* Feedback badge fills — alpha tints for night */
-      --color-badge-success-bg:   rgba(145, 219, 139, 0.14);
-      --color-badge-success-text: var(--color-green-80);
-      --color-badge-info-bg:      rgba(27, 150, 255, 0.14);
-      --color-badge-info-text:    var(--color-brand-80);
-      --color-badge-warning-bg:   rgba(252, 192, 3, 0.14);
-      --color-badge-warning-text: #fcd34d;
-    }
-
-    /* ============================================================
-       LAYER 2 — Typography (from tokens.css)
-       Salesforce Sans (body) + Avant Garde For Salesforce (display).
-    ============================================================ */
-    :root {
-      --font-family-display: "Avant Garde For Salesforce", "ITC Avant Garde", system-ui, -apple-system, sans-serif;
-      --font-family-body:    "Salesforce Sans", system-ui, -apple-system, sans-serif;
-
-      --font-weight-regular: 400;
-      --font-weight-demi:    600;
-      --font-weight-bold:    700;
-
-      /* -- font-style-display-6: 24px / demi — page heading */
-      --font-style-display-6-family:         var(--font-family-display);
-      --font-style-display-6-size:           24px;
-      --font-style-display-6-weight:         var(--font-weight-demi);
-      --font-style-display-6-line-height:    1.25;
-      --font-style-display-6-letter-spacing: -0.0015em;
-
-      /* -- font-style-display-7: 20px / demi — modal title */
-      --font-style-display-7-family:         var(--font-family-display);
-      --font-style-display-7-size:           20px;
-      --font-style-display-7-weight:         var(--font-weight-demi);
-      --font-style-display-7-line-height:    1.5;
-      --font-style-display-7-letter-spacing: -0.0015em;
-
-      /* -- font-style-display-9: 16px / demi — card heading */
-      --font-style-display-9-family:         var(--font-family-display);
-      --font-style-display-9-size:           16px;
-      --font-style-display-9-weight:         var(--font-weight-demi);
-      --font-style-display-9-line-height:    1.5;
-      --font-style-display-9-letter-spacing: 0.002em;
-
-      /* -- font-style-body-copy-*: body scale */
-      --font-style-body-copy-3-size: 16px;
-      --font-style-body-copy-4-size: 14px;
-      --font-style-body-copy-5-size: 12px;
-    }
-
-    /* ============================================================
-       LAYER 2 — Spacing (default ladder from tokens.css)
-    ============================================================ */
-    :root {
-      --space-1: 4px;
-      --space-2: 8px;
-      --space-3: 12px;
-      --space-4: 16px;
-      --space-5: 24px;
-      --space-6: 32px;
-      --space-7: 40px;
-      --space-8: 48px;
-      --space-9: 56px;
-    }
-
-    /* ============================================================
-       LAYER 2 — Radii (from tokens.css + slds2-bridge.css)
-       Salesforce standard: cards 12px, modals 16px,
-       badges + buttons: 9999px pill.
-    ============================================================ */
-    :root {
-      --radius-card:   12px;
-      --radius-modal:  16px;
-      --radius-badge:  9999px;
-      --radius-button: 9999px;
-      --radius-input:  4px;
-    }
-
-    /* ============================================================
-       RESET + BASE
-    ============================================================ */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { height: 100%; }
-    body {
-      min-height: 100%;
-      font-family: var(--font-family-body);
-      background: var(--color-background);
-      color: var(--color-on-surface-1);
-      overflow: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ============================================================
-       STAR FIELD — Salesforce Cosmos nebula background
-       Brand nebula glows: Cosmos blue + Salesforce violet
-    ============================================================ */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      background-image:
-        radial-gradient(1px 1px at  8%  18%, rgba(255,255,255,.50) 0%, transparent 100%),
-        radial-gradient(1px 1px at 22%  72%, rgba(255,255,255,.30) 0%, transparent 100%),
-        radial-gradient(1px 1px at 37%  11%, rgba(255,255,255,.45) 0%, transparent 100%),
-        radial-gradient(1px 1px at 51%  88%, rgba(255,255,255,.35) 0%, transparent 100%),
-        radial-gradient(1px 1px at 63%  34%, rgba(255,255,255,.40) 0%, transparent 100%),
-        radial-gradient(1px 1px at 77%  55%, rgba(255,255,255,.25) 0%, transparent 100%),
-        radial-gradient(1px 1px at 89%  22%, rgba(255,255,255,.45) 0%, transparent 100%),
-        radial-gradient(1px 1px at 14%  47%, rgba(255,255,255,.30) 0%, transparent 100%),
-        radial-gradient(1px 1px at 44%  63%, rgba(255,255,255,.25) 0%, transparent 100%),
-        radial-gradient(1px 1px at 71%  82%, rgba(255,255,255,.40) 0%, transparent 100%),
-        radial-gradient(1px 1px at 93%  66%, rgba(255,255,255,.30) 0%, transparent 100%),
-        radial-gradient(1px 1px at 29%  92%, rgba(255,255,255,.35) 0%, transparent 100%),
-        radial-gradient(1px 1px at 56%  44%, rgba(255,255,255,.25) 0%, transparent 100%),
-        radial-gradient(1px 1px at  4%  79%, rgba(255,255,255,.40) 0%, transparent 100%),
-        radial-gradient(1px 1px at 82%   9%, rgba(255,255,255,.50) 0%, transparent 100%),
-        radial-gradient(1.5px 1.5px at 17% 31%, rgba(255,255,255,.55) 0%, transparent 100%),
-        radial-gradient(1.5px 1.5px at 68% 17%, rgba(255,255,255,.45) 0%, transparent 100%),
-        radial-gradient(1.5px 1.5px at 41% 77%, rgba(255,255,255,.50) 0%, transparent 100%),
-        radial-gradient(1.5px 1.5px at 95% 41%, rgba(255,255,255,.40) 0%, transparent 100%),
-        radial-gradient(1.5px 1.5px at  2% 56%, rgba(255,255,255,.45) 0%, transparent 100%),
-        /* Salesforce Cosmos blue nebula */
-        radial-gradient(ellipse 60% 45% at 15% 25%, rgba(1, 118, 211, 0.14) 0%, transparent 70%),
-        /* Salesforce violet nebula */
-        radial-gradient(ellipse 50% 55% at 85% 75%, rgba(203, 101, 255, 0.11) 0%, transparent 70%),
-        radial-gradient(ellipse 70% 35% at 50%  5%, rgba(27, 150, 255, 0.07) 0%, transparent 60%);
-    }
-
-    /* ============================================================
-       CONSOLE SHELL
-    ============================================================ */
-    .console-shell {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-      padding: var(--space-5) var(--space-6);
-    }
-
-    /* ============================================================
-       HEADER
-    ============================================================ */
-    .console-header {
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      gap: var(--space-4);
-      padding-bottom: var(--space-4);
-      border-bottom: 1px solid var(--color-border-1);
-      margin-bottom: var(--space-6);
-    }
-
-    /* Salesforce Cloud logo mark */
-    .console-header__logo {
-      width: 44px;
-      height: 30px;
-      flex-shrink: 0;
-      filter: drop-shadow(0 0 10px var(--color-brand-glow));
-    }
-
-    .console-header__title {
-      font-family: var(--font-style-display-6-family);
-      font-size: var(--font-style-display-6-size);
-      font-weight: var(--font-style-display-6-weight);
-      line-height: var(--font-style-display-6-line-height);
-      letter-spacing: var(--font-style-display-6-letter-spacing);
-      color: var(--color-on-surface-3);
-    }
-
-    .console-header__byline {
-      margin-left: auto;
-      font-size: var(--font-style-body-copy-5-size);
-      color: var(--color-on-surface-4);
-      letter-spacing: 0.02em;
-    }
-
-    /* ============================================================
-       STAGE — drag arena
-    ============================================================ */
-    .console-stage {
-      flex: 1;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card-gallery {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--space-5);
-      padding: var(--space-4);
-    }
-
-    /* ============================================================
-       PROJECT CARD — idle state
-    ============================================================ */
-    .project-card {
-      position: relative;
-      width: 290px;
-      min-height: 264px;
-      background: var(--color-surface-1);
-      border: 1px solid var(--color-border-1);
-      border-radius: var(--radius-card);
-      padding: var(--space-5);
-      display: flex;
-      flex-direction: column;
-      cursor: grab;
-      outline: none;
-      opacity: 0;
-      transform: translateY(24px);
-      will-change: transform;
-    }
-
-    .project-card:focus-visible {
-      box-shadow: 0 0 0 2px var(--color-border-focus), 0 0 0 4px rgba(27,150,255,.18);
-    }
-
-    .project-card.is-dragging { cursor: grabbing; }
-
-    .project-card__accent {
-      position: absolute;
-      top: 0;
-      left: var(--space-4);
-      right: var(--space-4);
-      height: 2px;
-      border-radius: 0 0 2px 2px;
-    }
-
-    .project-card__num {
-      font-size: var(--font-style-body-copy-5-size);
-      color: var(--color-on-surface-4);
-      font-variant-numeric: tabular-nums;
-      letter-spacing: 0.06em;
-      margin-bottom: var(--space-2);
-    }
-
-    .project-card__title {
-      font-family: var(--font-style-display-9-family);
-      font-size: var(--font-style-display-9-size);
-      font-weight: var(--font-style-display-9-weight);
-      line-height: 1.35;
-      color: var(--color-on-surface-3);
-      margin-bottom: var(--space-3);
-    }
-
-    .project-card__tagline {
-      font-size: var(--font-style-body-copy-4-size);
-      color: var(--color-on-surface-2);
-      line-height: 1.55;
-      flex: 1;
-      margin-bottom: var(--space-4);
-    }
-
-    .project-card__footer {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: var(--space-3);
-      margin-top: auto;
-    }
-
-    .project-card__kpi-label {
-      font-size: var(--font-style-body-copy-5-size);
-      color: var(--color-on-surface-4);
-      margin-bottom: 2px;
-    }
-
-    .project-card__kpi-value {
-      font-size: var(--font-style-body-copy-4-size);
-      font-weight: var(--font-weight-demi);
-      color: var(--color-on-surface-3);
-      font-variant-numeric: tabular-nums;
-    }
-
-    .project-card__hint {
-      font-size: 11px;
-      color: var(--color-on-surface-4);
-      display: flex;
-      align-items: center;
-      gap: var(--space-1);
-      margin-top: var(--space-3);
-      padding-top: var(--space-3);
-      border-top: 1px solid var(--color-border-1);
-    }
-
-    /* ============================================================
-       SLDS BADGE — pill shape (radius-badge: 9999px)
-       Per tokens.css + slds2-bridge.css Salesforce standard.
-    ============================================================ */
-    .slds-badge {
-      display: inline-flex;
-      align-items: center;
-      padding: 2px var(--space-3);
-      border-radius: var(--radius-badge);
-      font-size: var(--font-style-body-copy-5-size);
-      font-weight: var(--font-weight-demi);
-      line-height: 1.5;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .slds-badge_success {
-      background: var(--color-badge-success-bg);
-      color: var(--color-badge-success-text);
-    }
-    .slds-badge_info {
-      background: var(--color-badge-info-bg);
-      color: var(--color-badge-info-text);
-    }
-    .slds-badge_warning {
-      background: var(--color-badge-warning-bg);
-      color: var(--color-badge-warning-text);
-    }
-
-    /* ============================================================
-       CARD DETAIL — expanded content
-    ============================================================ */
-    .card-detail { display: none; }
-
-    /* ============================================================
-       EXPANDED STATE
-    ============================================================ */
-    .project-card.is-expanded {
-      position: fixed !important;
-      z-index: 600 !important;
-      cursor: default;
-      overflow-y: auto;
-      border-radius: var(--radius-modal);
-    }
-
-    .project-card.is-expanded .card-face   { display: none; }
-    .project-card.is-expanded .card-detail { display: block; }
-
-    /* sticky close bar */
-    .card-detail__close-bar {
-      position: sticky;
-      top: -1px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: var(--space-4) var(--space-5);
-      margin: calc(-1 * var(--space-5)) calc(-1 * var(--space-5)) var(--space-4);
-      background: var(--color-surface-1);
-      border-bottom: 1px solid var(--color-border-1);
-      z-index: 10;
-    }
-
-    .card-detail__close-label {
-      font-size: var(--font-style-body-copy-5-size);
-      color: var(--color-on-surface-4);
-      letter-spacing: 0.06em;
-    }
-
-    /* Salesforce pill button */
-    .btn-close {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-2);
-      background: var(--color-alpha-white-10);
-      border: 1px solid var(--color-border-2);
-      color: var(--color-on-surface-2);
-      padding: 6px var(--space-4);
-      border-radius: var(--radius-button);
-      font-size: var(--font-style-body-copy-4-size);
-      font-family: var(--font-family-body);
-      font-weight: var(--font-weight-demi);
-      cursor: pointer;
-      transition: background 0.15s, color 0.15s, border-color 0.15s;
-    }
-    .btn-close:hover {
-      background: var(--color-alpha-white-15);
-      color: var(--color-on-surface-3);
-      border-color: var(--color-alpha-white-25);
-    }
-    .btn-close:focus-visible {
-      outline: 2px solid var(--color-border-focus);
-      outline-offset: 2px;
-    }
-
-    .card-detail__header {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-3);
-      margin-bottom: var(--space-6);
-    }
-
-    .card-detail__num {
-      font-size: var(--font-style-body-copy-5-size);
-      color: var(--color-on-surface-4);
-      letter-spacing: 0.06em;
-    }
-
-    .card-detail__title {
-      font-family: var(--font-style-display-7-family);
-      font-size: var(--font-style-display-7-size);
-      font-weight: var(--font-style-display-7-weight);
-      line-height: var(--font-style-display-7-line-height);
-      letter-spacing: var(--font-style-display-7-letter-spacing);
-      color: var(--color-on-surface-3);
-    }
-
-    .detail-section { margin-bottom: var(--space-6); }
-
-    .detail-section__heading {
-      font-size: var(--font-style-body-copy-5-size);
-      font-weight: var(--font-weight-demi);
-      color: var(--color-on-surface-4);
-      letter-spacing: 0.06em;
-      margin-bottom: var(--space-3);
-      padding-bottom: var(--space-2);
-      border-bottom: 1px solid var(--color-border-1);
-    }
-
-    .detail-section__body {
-      font-size: var(--font-style-body-copy-3-size);
-      color: var(--color-on-surface-1);
-      line-height: 1.75;
-    }
-
-    .detail-section__quote {
-      margin-top: var(--space-3);
-      padding: var(--space-3) var(--space-4);
-      background: var(--color-alpha-white-5);
-      border-left: 2px solid;
-      border-radius: 0 var(--radius-input) var(--radius-input) 0;
-      font-size: var(--font-style-body-copy-4-size);
-      color: var(--color-on-surface-2);
-      font-style: italic;
-      line-height: 1.65;
-    }
-
-    .detail-section__list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-3);
-    }
-
-    .detail-section__list li {
-      position: relative;
-      padding-left: var(--space-5);
-      font-size: var(--font-style-body-copy-4-size);
-      color: var(--color-on-surface-1);
-      line-height: 1.65;
-    }
-
-    .detail-section__list li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--color-on-surface-4);
-    }
-
-    /* outcomes table — .uc-table conventions per CLAUDE.md */
-    .outcomes-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: var(--font-style-body-copy-4-size);
-    }
-
-    .outcomes-table th {
-      text-align: left;
-      padding: var(--space-2) var(--space-3);
-      border-bottom: 1px solid var(--color-border-2);
-      color: var(--color-on-surface-4);
-      font-weight: var(--font-weight-demi);
-      font-size: var(--font-style-body-copy-5-size);
-      letter-spacing: 0.04em;
-    }
-
-    .outcomes-table th.num,
-    .outcomes-table td.num { text-align: right; }
-
-    .outcomes-table td {
-      padding: var(--space-3);
-      border-bottom: 1px solid var(--color-border-1);
-      color: var(--color-on-surface-1);
-      line-height: 1.4;
-    }
-
-    .outcomes-table td:first-child { color: var(--color-on-surface-2); }
-
-    .outcomes-table .val-after {
-      color: var(--color-on-surface-3);
-      font-weight: var(--font-weight-demi);
-    }
-
-    /* ============================================================
-       BACKDROP — Salesforce deep navy tint
-    ============================================================ */
-    #backdrop {
-      position: fixed;
-      inset: 0;
-      /* Salesforce deep navy with high opacity for the dim */
-      background: rgba(2, 28, 65, 0.88);
-      backdrop-filter: blur(3px);
-      z-index: 500;
-      opacity: 0;
-      pointer-events: none;
-    }
-    #backdrop.is-active { pointer-events: auto; }
-
-    /* ============================================================
-       RESPONSIVE
-    ============================================================ */
-    @media (max-width: 1100px) {
-      .project-card { width: 260px; }
-    }
-    @media (max-width: 860px) {
-      .card-gallery { gap: var(--space-4); }
-      .project-card { width: 230px; }
-    }
-    @media (max-width: 700px) {
-      body { overflow: auto; }
-      .console-shell { height: auto; min-height: 100vh; padding: var(--space-4); }
-      .console-stage { flex: none; overflow: visible; height: auto; }
-      .card-gallery {
-        position: static;
-        flex-direction: column;
-        align-items: stretch;
-        padding: 0;
-        gap: var(--space-4);
-      }
-      .project-card {
-        width: 100% !important;
-        cursor: default;
-        transform: none !important;
-        opacity: 1 !important;
-      }
-      .project-card.is-expanded {
-        position: static !important;
-        width: 100% !important;
-        height: auto !important;
-        top: auto !important;
-        left: auto !important;
-        transform: none !important;
-      }
-      #backdrop { display: none; }
-    }
-  </style>
 </head>
 <body>
 
@@ -648,394 +28,115 @@
     <span class="console-header__byline">Joharvi Garcia · Senior Product Designer</span>
   </header>
 
-  <main class="console-stage" id="stage" role="main" aria-label="Project card gallery">
-    <div class="card-gallery" id="card-gallery"></div>
-  </main>
+  <div class="console-body">
+
+    <aside class="sidebar" id="sidebar">
+      <!-- Toggle rail (always visible, left edge) -->
+      <button class="sidebar__rail" id="sidebar-toggle" aria-expanded="true" aria-label="Collapse sidebar">
+        <svg class="sidebar__rail-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M9 3L5 7L9 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div class="sidebar__pane">
+
+        <!-- Section 1: About -->
+        <div class="sidebar__section is-open">
+          <button class="sidebar__section-hd" aria-expanded="true">
+            <span class="sidebar__section-title">Candidate Profile</span>
+            <svg class="sidebar__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="sidebar__section-bd">
+            <div class="sidebar__profile">
+              <p class="sidebar__profile-name">Joharvi Garcia</p>
+              <p class="sidebar__profile-title">Senior Visual and Product Designer</p>
+              <p class="sidebar__profile-role">Senior Product Designer · Concentrix</p>
+              <div class="sidebar__clock-row">
+                <svg class="sidebar__clock-icon" width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+                  <circle cx="5.5" cy="5.5" r="4.5" stroke="currentColor" stroke-width="1.2"/>
+                  <path d="M5.5 3.5V5.5l1.5 1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+                <span id="gtm3-clock" class="sidebar__clock-time">--:--:--</span>
+                <span class="sidebar__clock-tz">GMT−3</span>
+              </div>
+              <a class="sidebar__address" href="https://maps.app.goo.gl/WNBuWxRTw72b5htd7" target="_blank" rel="noopener">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true">
+                  <path d="M5 .5C3.07.5 1.5 2.07 1.5 4c0 2.8 3.5 5.5 3.5 5.5S8.5 6.8 8.5 4C8.5 2.07 6.93.5 5 .5zm0 4.75a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5z"/>
+                </svg>
+                Mariano Fragueiro 585, Córdoba
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2: Case Studies -->
+        <div class="sidebar__section is-open">
+          <button class="sidebar__section-hd" aria-expanded="true">
+            <span class="sidebar__section-title">Relevant Salesforce Projects</span>
+            <svg class="sidebar__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="sidebar__section-bd">
+            <nav class="sidebar__nav" aria-label="Case studies">
+              <button class="sidebar__nav-btn" data-open="sci">
+                <span class="sidebar__nav-num">01</span>
+                Strategic Customer Investment (SCI) 2.0
+              </button>
+              <button class="sidebar__nav-btn" data-open="skills">
+                <span class="sidebar__nav-num">02</span>
+                Skills Insights App Redesign
+              </button>
+              <button class="sidebar__nav-btn" data-open="playground">
+                <span class="sidebar__nav-num">03</span>
+                Opportunity Playground
+              </button>
+              <button class="sidebar__nav-btn" data-open="orgsync">
+                <span class="sidebar__nav-num">04</span>
+                OrgSync App
+              </button>
+            </nav>
+          </div>
+        </div>
+
+        <!-- Section 3: Portfolio -->
+        <div class="sidebar__section is-open">
+          <button class="sidebar__section-hd" aria-expanded="true">
+            <span class="sidebar__section-title">Full Design Portfolio</span>
+            <svg class="sidebar__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="sidebar__section-bd">
+            <nav class="sidebar__nav" aria-label="Portfolio links">
+              <a class="sidebar__nav-link" href="https://joharvigarcia.webflow.io/" target="_blank" rel="noopener">
+                Portfolio
+                <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true"><path d="M3.5 1.5H1.5a1 1 0 00-1 1V7.5a1 1 0 001 1H7a1 1 0 001-1V5.5M5.5 1.5H7.5v2M7.5 1.5L4 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a class="sidebar__nav-link" href="https://www.behance.net/joharvigarcia" target="_blank" rel="noopener">
+                Behance
+                <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true"><path d="M3.5 1.5H1.5a1 1 0 00-1 1V7.5a1 1 0 001 1H7a1 1 0 001-1V5.5M5.5 1.5H7.5v2M7.5 1.5L4 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a class="sidebar__nav-link" href="https://www.linkedin.com/in/joharvi-garcia-product-designer/" target="_blank" rel="noopener">
+                LinkedIn
+                <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true"><path d="M3.5 1.5H1.5a1 1 0 00-1 1V7.5a1 1 0 001 1H7a1 1 0 001-1V5.5M5.5 1.5H7.5v2M7.5 1.5L4 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </nav>
+          </div>
+        </div>
+
+      </div><!-- /.sidebar__pane -->
+    </aside>
+
+    <main class="console-stage" id="stage" role="main" aria-label="Project card gallery">
+      <div class="card-gallery" id="card-gallery"></div>
+    </main>
+
+  </div><!-- /.console-body -->
 </div>
 
-<script>
-  /* ============================================================
-     DATA — all case study content
-     Card accent colors are Salesforce brand palette primitives:
-       SCI          → #1b96ff  (--color-brand-60: Cosmos Blue)
-       Skills       → #cb65ff  (--color-violet-60: Salesforce Violet)
-       Playground   → #ff5d2d  (--color-hot-orange-60: Hot Orange)
-  ============================================================ */
-  const PROJECTS = [
-    {
-      id: 'sci',
-      number: '01',
-      title: 'Strategic Customer Investment (SCI) 2.0',
-      tagline: '$480M+/yr in investments running through fragmented BaseCamp, Google Sheets, and Slack — 70% expiration/rejection rate',
-      kpi: { label: 'Approval time', value: '18.4 → <15 days' },
-      badge: { variant: 'slds-badge_success', text: 'Shipped' },
-      accent: '#1b96ff',
-      problem: '$480M+/yr (≈$885M over 3 years) in customer investments ran through a fragmented BaseCamp intake, a heavily customized Google Sheet, and a Slack "approval channel" with no source of truth — carrying SOX compliance risk. ~6,000 requests/year, with 70% expiring, stuck, recalled, or rejected due to tooling limits; approval cycles ran 1–2 months.',
-      problemQuote: '"The SCI thread is like a WhatsApp channel — I can\'t find what I need to approve." — approver',
-      role: 'Senior Product Designer on the DET tripod. Led UX, interviewed requestors and approvers (RVPs, VPs, Directors, SVPs across Sales and CSG), mapped every pain point to a feature, and defined the end-to-end journey and three key surfaces.',
-      decisions: [
-        'Moved intake to Salesforce-native (Org62), triggered from the account record to avoid context switching.',
-        'Built a Slack-first approval engine (filtered queues, in-context Approve/Reject/Request Info, dedicated record channels).',
-        'Made investment types/programs configuration records instead of hard-coded picklists — new investment paths don\'t require a redesign.',
-        'Tradeoff: external SWE creation (Org62) and PO creation (Coupa) remained required prerequisite steps outside the new flow rather than being absorbed.',
-      ],
-      outcomes: [
-        { metric: 'Approval time', before: '18.4 days', after: 'Under 15 days' },
-        { metric: 'Rejection/recall/expiration rate', before: '61%', after: '22%' },
-        { metric: 'Operational overhead', before: '—', after: '600+ hrs/month eliminated' },
-        { metric: 'Compliance', before: 'SOX risk', after: 'Audit-ready' },
-        { metric: 'Build-to-launch', before: '—', after: 'Under 4 months' },
-      ],
-    },
-    {
-      id: 'skills',
-      number: '02',
-      title: 'Skills Insights App Redesign',
-      tagline: 'Legacy Visualforce app with fragmented leveling guide vs. opportunity exploration forcing constant tab-switching',
-      kpi: { label: 'Review speed', value: '30–40% faster' },
-      badge: { variant: 'slds-badge_success', text: 'Shipped Mar 2026' },
-      accent: '#cb65ff',
-      problem: 'Legacy app ran on Visualforce and couldn\'t scale to a modern web experience. Poor data visualization and inconsistencies hurt usability. The Leveling Guide and Opportunity Exploration lived in separate places, forcing constant switching to compare current readiness vs. a target role. Managers manually consolidated data across systems for quarterly check-ins.',
-      role: 'Product Designer in a 4-person DEX pod. Ran a UX audit and IA/flow mapping to de-risk the migration, led two research rounds (8 moderated interviews with leaders/managers and technical consultants, plus usability testing), and produced wireframes/wireflows/before-after visions for every key surface.',
-      decisions: [
-        'Replatformed to LWC on the new Services Org.',
-        'Unified the leveling guide and career exploration into one place with a side-by-side readiness comparison.',
-        'Gave managers a "My Team" command center spanning org hierarchy levels 01–12 with search/filter/sort.',
-        'Surfaced skill definitions via in-app tooltips — removing the need for an external Google Sheet.',
-        'Auto-excluded off-boarded/inactive users from active views.',
-      ],
-      outcomes: [
-        { metric: 'Skill-assessment review speed', before: '—', after: '30–40% faster' },
-        { metric: 'Visibility into skill definitions', before: '—', after: '~95%' },
-      ],
-      outcomeQuote: '"This looks much cleaner and this definitely tells everything... where you stand today for your current role." — user feedback',
-    },
-    {
-      id: 'playground',
-      number: '03',
-      title: 'Opportunity Playground',
-      tagline: 'Manual PM-dependent "Pulse" health reporting scraped across Slack, calendars, and docs every Friday',
-      kpi: { label: 'Per-update time', value: '45–60 min → ~5 min' },
-      badge: { variant: 'slds-badge_info', text: 'Concept + Prototype' },
-      accent: '#ff5d2d',
-      problem: '"Pulse" (project health reporting) was PM-dependent and manual — PMs scraped signals scattered across Slack, calendars, and docs, then hand-copy-pasted a judgment-based update (RYG status, 5 health indicators, governance, compliance) into Org62 every Friday, competing with their actual delivery work. The model couldn\'t scale.',
-      problemQuote: '"I literally use Slack Bot… and then copy paste." — PM',
-      role: 'Product Designer. Framed the problem (Susan, a Resource Manager, and Arthur, a Lead Architect, as core personas), designed the concept/prototype for an agentic "Staffing/Pulse Agent," and built the Figma prototype and ROI model.',
-      decisions: [
-        'Shifted from "manual execution" to "agentic automation" — an agent that gathers signals across systems, drafts the full Pulse update, recommends RYG + reasoning, and writes back to Org62.',
-        'Moved from a tool that assists to a system that takes responsibility.',
-        'Framed as a repeatable pattern — same approach sketched for healthcare care-coordination, insurance claims, and supply-chain health.',
-      ],
-      outcomes: [
-        { metric: 'Per-update time', before: '45–60 min', after: '~5 min (review only)' },
-        { metric: 'PM hours saved (15 projects)', before: '—', after: '720 hrs/year ≈ $50,400 recovered capacity' },
-        { metric: 'Manager savings', before: '—', after: '40–60 hrs/month per manager' },
-        { metric: 'Staffing workload agent-handled', before: '—', after: '80%' },
-        { metric: 'Annual savings', before: '—', after: '$216K' },
-        { metric: 'Break-even', before: '—', after: '3.5 months' },
-        { metric: 'Revenue upside (5 RMs)', before: '—', after: 'Up to $2.4M for $62K incremental investment' },
-      ],
-    },
-  ];
-
-  /* ============================================================
-     BUILD CARD HTML
-  ============================================================ */
-  function buildCard(p) {
-    const el = document.createElement('article');
-    el.className = 'project-card';
-    el.id = `card-${p.id}`;
-    el.setAttribute('tabindex', '0');
-    el.setAttribute('role', 'button');
-    el.setAttribute('aria-expanded', 'false');
-    el.setAttribute('aria-label', `${p.title} — click to expand`);
-    el._project = p;
-
-    el.innerHTML = `
-      <div class="project-card__accent" style="background:${p.accent};" aria-hidden="true"></div>
-
-      <div class="card-face">
-        <div class="project-card__num">${p.number} / 03</div>
-        <h2 class="project-card__title">${p.title}</h2>
-        <p class="project-card__tagline">${p.tagline}</p>
-        <div class="project-card__footer">
-          <div>
-            <div class="project-card__kpi-label">${p.kpi.label}</div>
-            <div class="project-card__kpi-value">${p.kpi.value}</div>
-          </div>
-          <span class="slds-badge ${p.badge.variant}">${p.badge.text}</span>
-        </div>
-        <div class="project-card__hint" aria-hidden="true">
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" opacity=".7">
-            <path d="M5 1l.9 2.8H9L6.5 5.6l.9 2.8L5 6.7 2.6 8.4l.9-2.8L1 3.8h3.1z"/>
-          </svg>
-          Click to expand
-        </div>
-      </div>
-
-      <div class="card-detail" aria-hidden="true">
-        <div class="card-detail__close-bar">
-          <span class="card-detail__close-label">${p.number} / 03</span>
-          <button class="btn-close" aria-label="Close ${p.title}">✕ Close</button>
-        </div>
-
-        <div class="card-detail__header">
-          <h2 class="card-detail__title">${p.title}</h2>
-          <span class="slds-badge ${p.badge.variant}">${p.badge.text}</span>
-        </div>
-
-        <section class="detail-section" data-s="problem">
-          <h3 class="detail-section__heading">PROBLEM</h3>
-          <p class="detail-section__body">${p.problem}</p>
-          ${p.problemQuote ? `<blockquote class="detail-section__quote" style="border-color:${p.accent}">${p.problemQuote}</blockquote>` : ''}
-        </section>
-
-        <section class="detail-section" data-s="role">
-          <h3 class="detail-section__heading">MY ROLE</h3>
-          <p class="detail-section__body">${p.role}</p>
-        </section>
-
-        <section class="detail-section" data-s="decisions">
-          <h3 class="detail-section__heading">KEY DECISIONS & TRADEOFFS</h3>
-          <ul class="detail-section__list">
-            ${p.decisions.map(d => `<li>${d}</li>`).join('')}
-          </ul>
-        </section>
-
-        <section class="detail-section" data-s="outcomes">
-          <h3 class="detail-section__heading">MEASURED OUTCOMES</h3>
-          <table class="outcomes-table">
-            <thead>
-              <tr>
-                <th>Metric</th>
-                <th class="num">Before</th>
-                <th class="num">After</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${p.outcomes.map(o => `
-                <tr>
-                  <td>${o.metric}</td>
-                  <td class="num">${o.before}</td>
-                  <td class="num val-after">${o.after}</td>
-                </tr>`).join('')}
-            </tbody>
-          </table>
-          ${p.outcomeQuote ? `<blockquote class="detail-section__quote" style="border-color:${p.accent};margin-top:12px">${p.outcomeQuote}</blockquote>` : ''}
-        </section>
-      </div>
-    `;
-    return el;
-  }
-
-  /* ============================================================
-     INIT
-  ============================================================ */
-  const gallery    = document.getElementById('card-gallery');
-  const backdrop   = document.getElementById('backdrop');
-  const cardEls    = [];
-  let expandedCard = null;
-  let draggables   = [];
-  const isMobile   = () => window.innerWidth <= 700;
-
-  PROJECTS.forEach(p => {
-    const el = buildCard(p);
-    gallery.appendChild(el);
-    cardEls.push(el);
-  });
-
-  /* ============================================================
-     ENTRANCE — stagger fade + rise
-  ============================================================ */
-  gsap.to(cardEls, {
-    opacity: 1, y: 0,
-    duration: 0.65,
-    stagger: 0.14,
-    ease: 'power3.out',
-    delay: 0.2,
-    clearProps: 'transform',
-    onComplete() { initDraggables(); }
-  });
-
-  /* ============================================================
-     HOVER MICRO-INTERACTIONS
-  ============================================================ */
-  cardEls.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      if (expandedCard || el.classList.contains('is-dragging') || isMobile()) return;
-      gsap.to(el, {
-        scale: 1.025,
-        boxShadow: `0 8px 32px ${el._project.accent}28, 0 2px 8px rgba(0,0,0,.45)`,
-        duration: 0.22, ease: 'power2.out',
-      });
-    });
-    el.addEventListener('mouseleave', () => {
-      if (expandedCard || el.classList.contains('is-dragging') || isMobile()) return;
-      gsap.to(el, { scale: 1, boxShadow: 'none', duration: 0.28, ease: 'power2.inOut' });
-    });
-  });
-
-  /* ============================================================
-     DRAGGABLE
-  ============================================================ */
-  function initDraggables() {
-    if (isMobile()) return;
-    draggables.forEach(d => d.kill());
-    draggables = [];
-
-    cardEls.forEach((el, i) => {
-      const d = Draggable.create(el, {
-        type: 'x,y',
-        bounds: '#stage',
-        edgeResistance: 0.65,
-        onPress() {
-          this._pressX = this.x; this._pressY = this.y;
-          this._moved  = false;
-          el.style.zIndex = 200;
-        },
-        onDragStart() {
-          el.classList.add('is-dragging');
-          gsap.to(el, {
-            scale: 1.05,
-            rotation: i % 2 === 0 ? 1.8 : -1.8,
-            boxShadow: `0 20px 56px ${el._project.accent}35, 0 4px 16px rgba(0,0,0,.6)`,
-            duration: 0.18, ease: 'power2.out',
-          });
-        },
-        onDrag() {
-          const dx = Math.abs(this.x - this._pressX);
-          const dy = Math.abs(this.y - this._pressY);
-          if (dx > 4 || dy > 4) this._moved = true;
-        },
-        onDragEnd() {
-          el.classList.remove('is-dragging');
-          el.style.zIndex = '';
-          gsap.to(el, {
-            scale: 1, rotation: 0, boxShadow: 'none',
-            duration: 0.4, ease: 'elastic.out(1, 0.55)',
-          });
-          el._dragX = this.x; el._dragY = this.y;
-          el._wasDragged = this._moved;
-        },
-      })[0];
-      draggables.push(d);
-    });
-  }
-
-  /* ============================================================
-     CLICK / KEYBOARD
-  ============================================================ */
-  cardEls.forEach(el => {
-    el.addEventListener('click', e => {
-      if (el._wasDragged) { el._wasDragged = false; return; }
-      if (e.target.closest('.btn-close')) return;
-      if (expandedCard) return;
-      expandCard(el);
-    });
-    el.addEventListener('keydown', e => {
-      if ((e.key === 'Enter' || e.key === ' ') && !expandedCard) {
-        e.preventDefault(); expandCard(el);
-      }
-    });
-    el.querySelector('.btn-close').addEventListener('click', e => {
-      e.stopPropagation(); collapseCard();
-    });
-  });
-
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && expandedCard) collapseCard(); });
-  backdrop.addEventListener('click', () => collapseCard());
-
-  /* ============================================================
-     EXPAND — FLIP-style
-  ============================================================ */
-  function expandCard(el) {
-    if (expandedCard) return;
-    expandedCard = el;
-
-    const from = el.getBoundingClientRect();
-    el._cardRect   = from;
-    el._savedDragX = el._dragX || 0;
-    el._savedDragY = el._dragY || 0;
-
-    const vw = window.innerWidth, vh = window.innerHeight;
-    const tw = Math.min(680, vw - 40);
-    const th = Math.min(820, vh - 60);
-    const tx = (vw - tw) / 2, ty = (vh - th) / 2;
-
-    gsap.set(el, {
-      position: 'fixed',
-      left: from.left, top: from.top,
-      width: from.width, height: from.height,
-      x: 0, y: 0, zIndex: 600,
-    });
-
-    el.setAttribute('aria-expanded', 'true');
-    el.classList.add('is-expanded');
-    el.setAttribute('aria-label', el._project.title);
-    backdrop.classList.add('is-active');
-    backdrop.removeAttribute('aria-hidden');
-
-    const detail   = el.querySelector('.card-detail');
-    const sections = detail.querySelectorAll('.detail-section');
-    detail.style.display = 'block';
-    detail.setAttribute('aria-hidden', 'false');
-    gsap.set(detail, { opacity: 0 });
-    gsap.set(sections, { opacity: 0, y: 14 });
-
-    const tl = gsap.timeline();
-    tl.to(backdrop, { opacity: 1, duration: 0.3, ease: 'power2.out' });
-    tl.to(el, { left: tx, top: ty, width: tw, height: th, borderRadius: 16, duration: 0.48, ease: 'power3.inOut' }, 0);
-    tl.to(detail,   { opacity: 1, duration: 0.2 }, 0.3);
-    tl.to(sections, { opacity: 1, y: 0, duration: 0.38, stagger: 0.07, ease: 'power2.out' }, 0.38);
-    tl.call(() => el.querySelector('.btn-close').focus());
-  }
-
-  /* ============================================================
-     COLLAPSE
-  ============================================================ */
-  function collapseCard() {
-    if (!expandedCard) return;
-    const el       = expandedCard;
-    const detail   = el.querySelector('.card-detail');
-    const sections = detail.querySelectorAll('.detail-section');
-    const naturalRect = el._cardRect;
-
-    const tl = gsap.timeline({
-      onComplete() {
-        el.classList.remove('is-expanded');
-        detail.style.display = 'none';
-        detail.setAttribute('aria-hidden', 'true');
-        gsap.set(el, {
-          clearProps: 'position,left,top,width,height,zIndex,transform',
-          x: el._savedDragX, y: el._savedDragY,
-        });
-        el.setAttribute('aria-expanded', 'false');
-        el.setAttribute('aria-label', `${el._project.title} — click to expand`);
-        backdrop.classList.remove('is-active');
-        backdrop.setAttribute('aria-hidden', 'true');
-        expandedCard = null;
-        el.focus();
-      }
-    });
-
-    tl.to(sections, { opacity: 0, y: -10, duration: 0.18, stagger: 0.04, ease: 'power2.in' });
-    tl.to(detail,   { opacity: 0, duration: 0.12 }, '-=0.08');
-    tl.to(backdrop, { opacity: 0, duration: 0.3, ease: 'power2.in' }, '-=0.1');
-    tl.to(el, {
-      left: naturalRect.left, top: naturalRect.top,
-      width: naturalRect.width, height: naturalRect.height,
-      borderRadius: 12, duration: 0.42, ease: 'power3.inOut',
-    }, '-=0.25');
-  }
-
-  /* ============================================================
-     RESIZE
-  ============================================================ */
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(initDraggables, 150);
-  });
-</script>
+<script src="app.js"></script>
 </body>
 </html>

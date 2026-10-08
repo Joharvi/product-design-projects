@@ -1,0 +1,962 @@
+/* ============================================================
+   LAYER 1 — Salesforce brand primitives
+   Values transcribed from the project's src/tokens.css.
+   Only the night-relevant subset is declared here.
+============================================================ */
+:root {
+  /* Brand ramp — src: --color-brand-* */
+  --color-brand-10:  #021c41;
+  --color-brand-20:  #032d60;
+  --color-brand-30:  #014486;
+  --color-brand-40:  #0b5cab;
+  --color-brand-50:  #0176d3;
+  --color-brand-60:  #1b96ff;
+  --color-brand-70:  #52aeff;
+  --color-brand-80:  #94cdff;
+  --color-brand-90:  #d8e6fe;
+  --color-brand-95:  #eef4ff;
+
+  /* Violet ramp */
+  --color-violet-60: #cb65ff;
+
+  /* Hot orange ramp */
+  --color-hot-orange-60: #ff5d2d;
+
+  /* Neutrals */
+  --color-white:     #ffffff;
+
+  /* Greens */
+  --color-green-80:  #91db8b;
+
+  /* Alpha whites — night fills, borders, overlays */
+  --color-alpha-white-5:  rgba(255,255,255,0.05);
+  --color-alpha-white-10: rgba(255,255,255,0.10);
+  --color-alpha-white-15: rgba(255,255,255,0.15);
+  --color-alpha-white-25: rgba(255,255,255,0.25);
+  --color-alpha-white-40: rgba(255,255,255,0.40);
+  --color-alpha-white-50: rgba(255,255,255,0.50);
+  --color-alpha-white-75: rgba(255,255,255,0.75);
+  --color-alpha-white-85: rgba(255,255,255,0.85);
+}
+
+/* ============================================================
+   LAYER 2 — Semantic aliases: Night theme
+   Re-maps the same alias names the Day theme uses, pointing
+   them to the dark Salesforce navy palette.
+============================================================ */
+:root,
+[data-theme='night'] {
+  /* -- color-background: Salesforce deep navy */
+  --color-background:   var(--color-brand-10);
+  /* -- color-surface-1: slightly lifted card surface */
+  --color-surface-1:    #061e44;
+  /* -- color-surface-2: modal / elevated surface */
+  --color-surface-2:    var(--color-brand-20);
+  /* -- color-surface-3: strong interactive fill */
+  --color-surface-3:    var(--color-brand-40);
+
+  /* -- color-border-1/2: alpha separators */
+  --color-border-1:     var(--color-alpha-white-10);
+  --color-border-2:     var(--color-alpha-white-15);
+  /* legacy alias used in component styles */
+  --color-border:       var(--color-border-1);
+
+  /* -- color-on-surface-1/2/3/4: ink ramp on dark navy */
+  --color-on-surface-1: var(--color-alpha-white-85);
+  --color-on-surface-2: var(--color-alpha-white-50);
+  --color-on-surface-3: var(--color-white);
+  --color-on-surface-4: var(--color-alpha-white-25);
+
+  /* -- color-fill-accent / color-brand: Cosmos brand blue */
+  --color-fill-accent:  var(--color-brand-60);
+  --color-brand:        var(--color-brand-60);
+  --color-brand-dark:   var(--color-brand-50);
+  --color-brand-glow:   rgba(27, 150, 255, 0.22);
+
+  /* -- color-border-focus: focus ring */
+  --color-border-focus: var(--color-brand-60);
+
+  /* Feedback badge fills — alpha tints for night */
+  --color-badge-success-bg:   rgba(145, 219, 139, 0.14);
+  --color-badge-success-text: var(--color-green-80);
+  --color-badge-info-bg:      rgba(27, 150, 255, 0.14);
+  --color-badge-info-text:    var(--color-brand-80);
+  --color-badge-warning-bg:   rgba(252, 192, 3, 0.14);
+  --color-badge-warning-text: #fcd34d;
+}
+
+/* ============================================================
+   LAYER 2 — Typography (from tokens.css)
+   Salesforce Sans (body) + Avant Garde For Salesforce (display).
+============================================================ */
+:root {
+  --font-family-display: "Avant Garde For Salesforce", "ITC Avant Garde", system-ui, -apple-system, sans-serif;
+  --font-family-body:    "Salesforce Sans", system-ui, -apple-system, sans-serif;
+
+  --font-weight-regular: 400;
+  --font-weight-demi:    600;
+  --font-weight-bold:    700;
+
+  /* -- font-style-display-6: 24px / demi — page heading */
+  --font-style-display-6-family:         var(--font-family-display);
+  --font-style-display-6-size:           24px;
+  --font-style-display-6-weight:         var(--font-weight-demi);
+  --font-style-display-6-line-height:    1.25;
+  --font-style-display-6-letter-spacing: -0.0015em;
+
+  /* -- font-style-display-7: 20px / demi — modal title */
+  --font-style-display-7-family:         var(--font-family-display);
+  --font-style-display-7-size:           20px;
+  --font-style-display-7-weight:         var(--font-weight-demi);
+  --font-style-display-7-line-height:    1.5;
+  --font-style-display-7-letter-spacing: -0.0015em;
+
+  /* -- font-style-display-9: 16px / demi — card heading */
+  --font-style-display-9-family:         var(--font-family-display);
+  --font-style-display-9-size:           16px;
+  --font-style-display-9-weight:         var(--font-weight-demi);
+  --font-style-display-9-line-height:    1.5;
+  --font-style-display-9-letter-spacing: 0.002em;
+
+  /* -- font-style-body-copy-*: body scale */
+  --font-style-body-copy-3-size: 16px;
+  --font-style-body-copy-4-size: 14px;
+  --font-style-body-copy-5-size: 12px;
+}
+
+/* ============================================================
+   LAYER 2 — Spacing (default ladder from tokens.css)
+============================================================ */
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 40px;
+  --space-8: 48px;
+  --space-9: 56px;
+}
+
+/* ============================================================
+   LAYER 2 — Radii (from tokens.css + slds2-bridge.css)
+   Salesforce standard: cards 12px, modals 16px,
+   badges + buttons: 9999px pill.
+============================================================ */
+:root {
+  --radius-card:   12px;
+  --radius-modal:  16px;
+  --radius-badge:  9999px;
+  --radius-button: 9999px;
+  --radius-input:  4px;
+}
+
+/* ============================================================
+   RESET + BASE
+============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { height: 100%; }
+body {
+  min-height: 100%;
+  font-family: var(--font-family-body);
+  background: var(--color-background);
+  color: var(--color-on-surface-1);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   STAR FIELD — Salesforce Cosmos nebula background
+   Brand nebula glows: Cosmos blue + Salesforce violet
+============================================================ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(1px 1px at  8%  18%, rgba(255,255,255,.50) 0%, transparent 100%),
+    radial-gradient(1px 1px at 22%  72%, rgba(255,255,255,.30) 0%, transparent 100%),
+    radial-gradient(1px 1px at 37%  11%, rgba(255,255,255,.45) 0%, transparent 100%),
+    radial-gradient(1px 1px at 51%  88%, rgba(255,255,255,.35) 0%, transparent 100%),
+    radial-gradient(1px 1px at 63%  34%, rgba(255,255,255,.40) 0%, transparent 100%),
+    radial-gradient(1px 1px at 77%  55%, rgba(255,255,255,.25) 0%, transparent 100%),
+    radial-gradient(1px 1px at 89%  22%, rgba(255,255,255,.45) 0%, transparent 100%),
+    radial-gradient(1px 1px at 14%  47%, rgba(255,255,255,.30) 0%, transparent 100%),
+    radial-gradient(1px 1px at 44%  63%, rgba(255,255,255,.25) 0%, transparent 100%),
+    radial-gradient(1px 1px at 71%  82%, rgba(255,255,255,.40) 0%, transparent 100%),
+    radial-gradient(1px 1px at 93%  66%, rgba(255,255,255,.30) 0%, transparent 100%),
+    radial-gradient(1px 1px at 29%  92%, rgba(255,255,255,.35) 0%, transparent 100%),
+    radial-gradient(1px 1px at 56%  44%, rgba(255,255,255,.25) 0%, transparent 100%),
+    radial-gradient(1px 1px at  4%  79%, rgba(255,255,255,.40) 0%, transparent 100%),
+    radial-gradient(1px 1px at 82%   9%, rgba(255,255,255,.50) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 17% 31%, rgba(255,255,255,.55) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 68% 17%, rgba(255,255,255,.45) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 41% 77%, rgba(255,255,255,.50) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 95% 41%, rgba(255,255,255,.40) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at  2% 56%, rgba(255,255,255,.45) 0%, transparent 100%),
+    /* Salesforce Cosmos blue nebula */
+    radial-gradient(ellipse 60% 45% at 15% 25%, rgba(1, 118, 211, 0.14) 0%, transparent 70%),
+    /* Salesforce violet nebula */
+    radial-gradient(ellipse 50% 55% at 85% 75%, rgba(203, 101, 255, 0.11) 0%, transparent 70%),
+    radial-gradient(ellipse 70% 35% at 50%  5%, rgba(27, 150, 255, 0.07) 0%, transparent 60%);
+}
+
+/* ============================================================
+   CONSOLE SHELL
+============================================================ */
+.console-shell {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: var(--space-5) var(--space-6);
+}
+
+/* ============================================================
+   HEADER
+============================================================ */
+.console-header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border-1);
+  margin-bottom: var(--space-6);
+}
+
+/* Salesforce Cloud logo mark */
+.console-header__logo {
+  width: 44px;
+  height: 30px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 10px var(--color-brand-glow));
+}
+
+.console-header__title {
+  font-family: var(--font-style-display-6-family);
+  font-size: var(--font-style-display-6-size);
+  font-weight: var(--font-style-display-6-weight);
+  line-height: var(--font-style-display-6-line-height);
+  letter-spacing: var(--font-style-display-6-letter-spacing);
+  color: var(--color-on-surface-3);
+}
+
+.console-header__byline {
+  margin-left: auto;
+  font-size: var(--font-style-body-copy-5-size);
+  color: var(--color-on-surface-4);
+  letter-spacing: 0.02em;
+}
+
+/* ============================================================
+   CONSOLE BODY — sidebar + stage row
+============================================================ */
+.console-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  gap: var(--space-4);
+}
+
+/* ============================================================
+   SIDEBAR
+============================================================ */
+.sidebar {
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  width: 240px;
+  overflow: hidden;
+  transition: width 600ms ease-in-out;
+  background: var(--color-surface-1);
+  border: 1px solid var(--color-border-1);
+  border-radius: var(--radius-card);
+}
+
+.sidebar.is-collapsed {
+  width: 28px;
+}
+
+/* Toggle strip — always visible at the left edge */
+.sidebar__rail {
+  width: 28px;
+  min-width: 28px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-right: 1px solid var(--color-border-1);
+  color: var(--color-on-surface-4);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.15s, color 0.15s;
+}
+
+.sidebar__rail:hover {
+  background: var(--color-alpha-white-5);
+  color: var(--color-on-surface-2);
+}
+
+.sidebar__rail:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: -2px;
+}
+
+.sidebar__rail-icon {
+  flex-shrink: 0;
+  transition: transform 600ms ease-in-out;
+}
+
+/* Rotate 180° when collapsed so ‹ becomes › */
+.sidebar.is-collapsed .sidebar__rail-icon {
+  transform: rotate(180deg);
+}
+
+/* Scrollable content pane */
+.sidebar__pane {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  opacity: 1;
+  /* expanding: delay 250ms so the sidebar opens before content fades in */
+  transition: opacity 350ms ease-in-out 250ms;
+}
+
+.sidebar.is-collapsed .sidebar__pane {
+  opacity: 0;
+  /* collapsing: fade out immediately, no delay */
+  transition: opacity 200ms ease-in-out;
+}
+
+/* Accordion section */
+.sidebar__section {
+  border-bottom: 1px solid var(--color-border-1);
+}
+
+.sidebar__section:last-child {
+  border-bottom: none;
+}
+
+.sidebar__section-hd {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background: transparent;
+  border: none;
+  color: var(--color-on-surface-2);
+  font-family: var(--font-family-body);
+  font-size: var(--font-style-body-copy-5-size);
+  font-weight: var(--font-weight-demi);
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.15s, background 0.15s;
+}
+
+.sidebar__section-hd:hover {
+  color: var(--color-on-surface-3);
+  background: var(--color-alpha-white-5);
+}
+
+.sidebar__section-title {
+  flex: 1;
+  line-height: 1.45;
+}
+
+.sidebar__chevron {
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--color-on-surface-4);
+  transition: transform 0.22s;
+}
+
+.sidebar__section.is-open .sidebar__chevron {
+  transform: rotate(180deg);
+}
+
+.sidebar__section-bd {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.26s ease;
+}
+
+.sidebar__section.is-open .sidebar__section-bd {
+  max-height: 600px;
+}
+
+/* Profile (section 1) */
+.sidebar__profile {
+  padding: var(--space-2) var(--space-4) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.sidebar__profile-name {
+  font-family: var(--font-style-display-9-family);
+  font-size: var(--font-style-display-9-size);
+  font-weight: var(--font-style-display-9-weight);
+  line-height: var(--font-style-display-9-line-height);
+  color: var(--color-on-surface-3);
+}
+
+.sidebar__profile-title {
+  font-size: var(--font-style-body-copy-5-size);
+  color: var(--color-on-surface-2);
+  line-height: 1.45;
+}
+
+.sidebar__profile-role {
+  font-size: var(--font-style-body-copy-5-size);
+  color: var(--color-on-surface-4);
+}
+
+.sidebar__clock-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: var(--space-1);
+}
+
+.sidebar__clock-icon {
+  color: var(--color-on-surface-4);
+  flex-shrink: 0;
+}
+
+.sidebar__clock-time {
+  font-size: var(--font-style-body-copy-5-size);
+  color: var(--color-on-surface-2);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+
+.sidebar__clock-tz {
+  font-size: 10px;
+  color: var(--color-on-surface-4);
+}
+
+.sidebar__address {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--space-1);
+  font-size: var(--font-style-body-copy-5-size);
+  color: var(--color-fill-accent);
+  text-decoration: none;
+  line-height: 1.4;
+  transition: color 0.15s;
+}
+
+.sidebar__address svg { margin-top: 2px; flex-shrink: 0; }
+
+.sidebar__address:hover {
+  color: var(--color-on-surface-3);
+}
+
+/* Nav items (sections 2 & 3) */
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-2) 0 var(--space-3);
+}
+
+.sidebar__nav-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-2) var(--space-4);
+  background: transparent;
+  border: none;
+  color: var(--color-on-surface-2);
+  font-size: var(--font-style-body-copy-5-size);
+  font-family: var(--font-family-body);
+  cursor: pointer;
+  text-align: left;
+  line-height: 1.5;
+  transition: color 0.15s, background 0.15s;
+}
+
+.sidebar__nav-btn:hover {
+  color: var(--color-on-surface-3);
+  background: var(--color-alpha-white-5);
+}
+
+.sidebar__nav-num {
+  font-variant-numeric: tabular-nums;
+  color: var(--color-on-surface-4);
+  flex-shrink: 0;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  padding-top: 2px;
+}
+
+.sidebar__nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-4);
+  color: var(--color-fill-accent);
+  font-size: var(--font-style-body-copy-5-size);
+  text-decoration: none;
+  transition: color 0.15s, background 0.15s;
+}
+
+.sidebar__nav-link:hover {
+  color: var(--color-on-surface-3);
+  background: var(--color-alpha-white-5);
+}
+
+/* ============================================================
+   STAGE — drag arena
+============================================================ */
+.console-stage {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.card-gallery {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5);
+  padding: var(--space-4);
+}
+
+/* ============================================================
+   PROJECT CARD — idle state
+============================================================ */
+.project-card {
+  position: relative;
+  width: 290px;
+  min-height: 264px;
+  background: var(--color-surface-1);
+  border: 1px solid var(--color-border-1);
+  border-radius: var(--radius-card);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  cursor: grab;
+  outline: none;
+  opacity: 0;
+  transform: translateY(24px);
+  will-change: transform;
+}
+
+.project-card:focus-visible {
+  box-shadow: 0 0 0 2px var(--color-border-focus), 0 0 0 4px rgba(27,150,255,.18);
+}
+
+.project-card.is-dragging { cursor: grabbing; }
+
+.project-card__accent {
+  position: absolute;
+  top: 0;
+  left: var(--space-4);
+  right: var(--space-4);
+  height: 2px;
+  border-radius: 0 0 2px 2px;
+}
+
+.project-card__num {
+  font-size: var(--font-style-body-copy-5-size);
+  color: var(--color-on-surface-4);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--space-2);
+}
+
+.project-card__title {
+  font-family: var(--font-style-display-9-family);
+  font-size: var(--font-style-display-9-size);
+  font-weight: var(--font-style-display-9-weight);
+  line-height: 1.35;
+  color: var(--color-on-surface-3);
+  margin-bottom: var(--space-3);
+}
+
+.project-card__tagline {
+  font-size: var(--font-style-body-copy-4-size);
+  color: var(--color-on-surface-2);
+  line-height: 1.55;
+  flex: 1;
+  margin-bottom: var(--space-4);
+}
+
+.project-card__footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: auto;
+}
+
+.project-card__kpi-label {
+  font-size: var(--font-style-body-copy-5-size);
+  color: var(--color-on-surface-4);
+  margin-bottom: 2px;
+}
+
+.project-card__kpi-value {
+  font-size: var(--font-style-body-copy-4-size);
+  font-weight: var(--font-weight-demi);
+  color: var(--color-on-surface-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.project-card__hint {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border-1);
+}
+
+/* ============================================================
+   SLDS BADGE — pill shape (radius-badge: 9999px)
+   Per tokens.css + slds2-bridge.css Salesforce standard.
+============================================================ */
+.slds-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px var(--space-3);
+  border-radius: var(--radius-badge);
+  font-size: var(--font-style-body-copy-5-size);
+  font-weight: var(--font-weight-demi);
+  line-height: 1.5;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.slds-badge_success {
+  background: var(--color-badge-success-bg);
+  color: var(--color-badge-success-text);
+}
+.slds-badge_info {
+  background: var(--color-badge-info-bg);
+  color: var(--color-badge-info-text);
+}
+.slds-badge_warning {
+  background: var(--color-badge-warning-bg);
+  color: var(--color-badge-warning-text);
+}
+
+/* ============================================================
+   CARD DETAIL — expanded content
+============================================================ */
+.card-detail { display: none; }
+
+/* ============================================================
+   EXPANDED STATE
+============================================================ */
+.project-card.is-expanded {
+  position: fixed !important;
+  z-index: 600 !important;
+  cursor: default;
+  border-radius: var(--radius-modal);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.project-card.is-expanded .card-face { display: none; }
+.project-card.is-expanded .card-detail {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.card-detail__close-bar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-surface-1);
+  border-bottom: 1px solid var(--color-border-1);
+  border-radius: var(--radius-modal) var(--radius-modal) 0 0;
+}
+
+.card-detail__body {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  padding: var(--space-5);
+}
+
+.card-detail__close-label {
+  font-size: var(--font-style-body-copy-5-size);
+  color: var(--color-on-surface-4);
+  letter-spacing: 0.06em;
+}
+
+/* Salesforce SLDS2 primary pill button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--color-brand);
+  border: 1px solid transparent;
+  color: var(--color-white);
+  padding: 6px var(--space-4);
+  border-radius: var(--radius-button);
+  font-size: var(--font-style-body-copy-4-size);
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-demi);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s, box-shadow 0.15s;
+}
+.btn-primary:hover {
+  background: var(--color-brand-dark);
+  box-shadow: 0 0 0 3px var(--color-brand-glow);
+}
+.btn-primary:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+.btn-primary--small {
+  padding: 3px var(--space-3);
+  font-size: var(--font-style-body-copy-5-size);
+}
+
+/* Salesforce SLDS2 secondary pill button */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--color-alpha-white-10);
+  border: 1px solid var(--color-border-2);
+  color: var(--color-on-surface-2);
+  padding: 6px var(--space-4);
+  border-radius: var(--radius-button);
+  font-size: var(--font-style-body-copy-4-size);
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-demi);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.btn-secondary:hover {
+  background: var(--color-alpha-white-15);
+  color: var(--color-on-surface-3);
+  border-color: var(--color-alpha-white-25);
+}
+.btn-secondary:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+.btn-secondary--small {
+  padding: 3px var(--space-3);
+  font-size: var(--font-style-body-copy-5-size);
+}
+
+/* Salesforce pill button */
+.btn-close {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--color-alpha-white-10);
+  border: 1px solid var(--color-border-2);
+  color: var(--color-on-surface-2);
+  padding: 6px var(--space-4);
+  border-radius: var(--radius-button);
+  font-size: var(--font-style-body-copy-4-size);
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-demi);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.btn-close:hover {
+  background: var(--color-alpha-white-15);
+  color: var(--color-on-surface-3);
+  border-color: var(--color-alpha-white-25);
+}
+.btn-close:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.card-detail__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.card-detail__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.card-detail__num {
+  font-size: var(--font-style-body-copy-5-size);
+  color: var(--color-on-surface-4);
+  letter-spacing: 0.06em;
+}
+
+.card-detail__title {
+  font-family: var(--font-style-display-7-family);
+  font-size: var(--font-style-display-7-size);
+  font-weight: var(--font-style-display-7-weight);
+  line-height: var(--font-style-display-7-line-height);
+  letter-spacing: var(--font-style-display-7-letter-spacing);
+  color: var(--color-on-surface-3);
+}
+
+.detail-section { margin-bottom: var(--space-6); }
+
+.detail-section__heading {
+  font-size: var(--font-style-body-copy-5-size);
+  font-weight: var(--font-weight-demi);
+  color: var(--color-on-surface-4);
+  letter-spacing: 0.06em;
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-border-1);
+}
+
+.detail-section__body {
+  font-size: var(--font-style-body-copy-3-size);
+  color: var(--color-on-surface-1);
+  line-height: 1.75;
+}
+
+.detail-section__quote {
+  margin-top: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-alpha-white-5);
+  border-left: 2px solid;
+  border-radius: 0 var(--radius-input) var(--radius-input) 0;
+  font-size: var(--font-style-body-copy-4-size);
+  color: var(--color-on-surface-2);
+  font-style: italic;
+  line-height: 1.65;
+}
+
+.detail-section__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.detail-section__list li {
+  position: relative;
+  padding-left: var(--space-5);
+  font-size: var(--font-style-body-copy-4-size);
+  color: var(--color-on-surface-1);
+  line-height: 1.65;
+}
+
+.detail-section__list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--color-on-surface-4);
+}
+
+/* outcomes table — .uc-table conventions per CLAUDE.md */
+.outcomes-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-style-body-copy-4-size);
+}
+
+.outcomes-table th {
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-border-2);
+  color: var(--color-on-surface-4);
+  font-weight: var(--font-weight-demi);
+  font-size: var(--font-style-body-copy-5-size);
+  letter-spacing: 0.04em;
+}
+
+.outcomes-table th.num,
+.outcomes-table td.num { text-align: right; }
+
+.outcomes-table td {
+  padding: var(--space-3);
+  border-bottom: 1px solid var(--color-border-1);
+  color: var(--color-on-surface-1);
+  line-height: 1.4;
+}
+
+.outcomes-table td:first-child { color: var(--color-on-surface-2); }
+
+.outcomes-table .val-after {
+  color: var(--color-on-surface-3);
+  font-weight: var(--font-weight-demi);
+}
+
+/* ============================================================
+   BACKDROP — Salesforce deep navy tint
+============================================================ */
+#backdrop {
+  position: fixed;
+  inset: 0;
+  /* Salesforce deep navy with high opacity for the dim */
+  background: rgba(2, 28, 65, 0.88);
+  backdrop-filter: blur(3px);
+  z-index: 500;
+  opacity: 0;
+  pointer-events: none;
+}
+#backdrop.is-active { pointer-events: auto; }
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 1100px) {
+  .project-card { width: 260px; }
+}
+@media (max-width: 860px) {
+  .card-gallery { gap: var(--space-4); }
+  .project-card { width: 230px; }
+}
+@media (max-width: 700px) {
+  body { overflow: auto; }
+  .console-shell { height: auto; min-height: 100vh; padding: var(--space-4); }
+  .sidebar { display: none; }
+  .console-body { gap: 0; }
+  .console-stage { flex: none; overflow: visible; height: auto; }
+  .card-gallery {
+    position: static;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+    gap: var(--space-4);
+  }
+  .project-card {
+    width: 100% !important;
+    cursor: default;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  .project-card.is-expanded {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+  }
+  #backdrop { display: none; }
+}
+}
