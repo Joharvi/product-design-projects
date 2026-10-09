@@ -247,10 +247,23 @@ body::before {
 }
 
 .console-header__byline {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
   margin-left: auto;
   font-size: var(--font-style-body-copy-5-size);
   color: var(--color-on-surface-3);
   letter-spacing: 0.02em;
+}
+
+.console-header__avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  /* --color-border-1: subtle ring to separate from background */
+  border: 1px solid var(--color-border-1);
 }
 
 /* ============================================================
@@ -413,7 +426,7 @@ body::before {
 
 .sidebar__profile-title {
   font-size: var(--font-style-body-copy-5-size);
-  color: var(--color-on-surface-3);
+  color: var(--color-on-surface-2);
   line-height: 1.45;
 }
 
