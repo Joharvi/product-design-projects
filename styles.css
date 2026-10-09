@@ -282,7 +282,7 @@ body::before {
 ============================================================ */
 .sidebar {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-shrink: 0;
   width: 240px;
   overflow: hidden;
@@ -293,34 +293,40 @@ body::before {
 }
 
 .sidebar.is-collapsed {
-  width: 28px;
+  width: 44px;
 }
 
-/* Toggle strip — always visible at the left edge */
+/* SLDS2 small base icon button — sits above the pane */
 .sidebar__rail {
-  width: 28px;
-  min-width: 28px;
+  /* align-self: flex-end + margin-right: 2px keeps the button (24px)
+     within the 28px collapsed sidebar: 28 - 2 - 24 = 2px left offset */
+  align-self: flex-start;
   flex-shrink: 0;
+  margin: var(--space-2) 2px 0 10px;
+  width: 24px;
+  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
+  /* --color-border-1 transparent base: no visible border at rest */
+  border: 1px solid transparent;
+  border-radius: var(--radius-button);
   background: transparent;
-  border: none;
-  border-right: 1px solid var(--color-border-1);
-  color: var(--color-on-surface-4);
+  color: var(--color-on-surface-3);
   cursor: pointer;
   padding: 0;
-  transition: background 0.15s, color 0.15s;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
 .sidebar__rail:hover {
-  background: var(--color-alpha-white-5);
+  /* --color-alpha-white-10: hover fill for base icon button */
+  background: var(--color-alpha-white-10);
   color: var(--color-on-surface-2);
 }
 
 .sidebar__rail:focus-visible {
   outline: 2px solid var(--color-border-focus);
-  outline-offset: -2px;
+  outline-offset: 2px;
 }
 
 .sidebar__rail-icon {
@@ -336,7 +342,7 @@ body::before {
 /* Scrollable content pane */
 .sidebar__pane {
   flex: 1;
-  min-width: 0;
+  min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
   opacity: 1;
@@ -809,6 +815,16 @@ body::before {
   overflow-y: auto;
   min-height: 0;
   padding: var(--space-5);
+}
+
+/* Full-width hero image at the top of the expanded card */
+.card-detail__hero {
+  display: block;
+  width: calc(100% + var(--space-5) * 2);
+  margin: calc(-1 * var(--space-5)) calc(-1 * var(--space-5)) var(--space-5);
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: var(--radius-modal) var(--radius-modal) 0 0;
 }
 
 .card-detail__close-label {

@@ -15,6 +15,7 @@ const PROJECTS = [
     kpi: { label: 'Approval time', value: '18.4 → <15 days' },
     badge: { variant: 'slds-badge_success', text: 'Shipped' },
     accent: '#1b96ff',
+    heroImage: 'images/01-04 Strategic Customer Investment.png',
     links: {
       summary: 'https://docs.google.com/presentation/d/10B9HG7T5fXcW101Jtkdcxn2fVTwxL5rDGNaMGmN2c1Y/edit?usp=sharing',
       figma:   'https://www.figma.com/design/lJC7YlKOPI4q6fSmSzkKE1/-PS----SCI-Modernized?node-id=0-1&t=n61Iutb9qWwixroF-1',
@@ -44,6 +45,7 @@ const PROJECTS = [
     kpi: { label: 'Review speed', value: '30–40% faster' },
     badge: { variant: 'slds-badge_success', text: 'Shipped Mar 2026' },
     accent: '#cb65ff',
+    heroImage: 'images/02-04 Skills Insights App.png',
     links: {
       summary: 'https://docs.google.com/presentation/d/19wkdwznh-WNMb_XXIyOgMbCDbDvaoBrgf6U-yYAbgKc/edit?usp=sharing',
       figma:   'https://www.figma.com/design/MjdNVS0TowZXGHMjTvDhHe/ProServ----Skill-Insights-App-Migration?node-id=0-1&t=Yc1VWN2EenXxUh5N-1',
@@ -71,6 +73,7 @@ const PROJECTS = [
     kpi: { label: 'Per-update time', value: '45–60 min → ~5 min' },
     badge: { variant: 'slds-badge_info', text: 'Concept + Prototype' },
     accent: '#ff5d2d',
+    heroImage: 'images/03-04 Opportunity Playground.png',
     links: {
       summary: 'https://docs.google.com/presentation/d/1QzcQyCs0QWvU1z9Fh7NoJaZ6rMq1_qJcoNilEBCavTQ/edit?usp=sharing',
       figma:   'https://www.figma.com/proto/tqKveJgSUvvoS2otV4m1Ip/Slackbot-Version?node-id=2387-150195&p=f&viewport=144%2C-396%2C0.05&t=QcpqHGUofE4gaGZQ-0&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2387%3A156834&show-proto-sidebar=1',
@@ -101,6 +104,7 @@ const PROJECTS = [
     kpi: { label: 'Manual JSON errors', value: '90% error source' },
     badge: { variant: 'slds-badge_success', text: 'Shipped Jul 2026' },
     accent: '#91db8b',
+    heroImage: null,
     links: {
       summary: 'https://docs.google.com/presentation/d/13S3DEkmj-L4IJ2ntLzhFLFWGQWlhWCYORnxykujL_qY/edit?usp=sharing',
       figma:   'https://www.figma.com/design/ThSM1oXiJwPSMk2QPaS0ND/Revenue-SOS-UXD----OrgSync-App-%F0%9F%9A%A7?node-id=0-1&t=xpIjyHJuTAIn9gSY-1',
@@ -165,11 +169,12 @@ function buildCard(p) {
       </div>
 
       <div class="card-detail__body">
+        ${p.heroImage ? `<img class="card-detail__hero" src="${p.heroImage}" alt="${p.title} — project preview">` : ''}
         <div class="card-detail__header">
           <h2 class="card-detail__title">${p.title}</h2>
           <span class="slds-badge ${p.badge.variant}">${p.badge.text}</span>
           <div class="card-detail__actions">
-            ${p.links.summary ? `<a class="btn-primary btn-primary--small" href="${p.links.summary}" target="_blank" rel="noopener">Executive Summary</a>` : ''}
+            ${p.links.summary ? `<a class="btn-primary btn-primary--small" href="${p.links.summary}" target="_blank" rel="noopener">View Executive Summary</a>` : ''}
             <a class="btn-secondary btn-secondary--small" href="${p.links.figma}" target="_blank" rel="noopener">Open Figma Blueprint</a>
           </div>
         </div>
