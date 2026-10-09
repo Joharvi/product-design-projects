@@ -314,6 +314,23 @@ function initDraggables() {
 }
 
 /* ============================================================
+   HINT CARD — reset layout
+============================================================ */
+document.getElementById('reset-positions').addEventListener('click', () => {
+  cardEls.forEach((el, i) => {
+    gsap.to(el, {
+      x: 0, y: 0,
+      duration: 0.55,
+      ease: 'power3.out',
+      onComplete() {
+        el._dragX = 0; el._dragY = 0; el._wasDragged = false;
+        if (draggables[i]) draggables[i].update();
+      },
+    });
+  });
+});
+
+/* ============================================================
    CLICK / KEYBOARD
 ============================================================ */
 cardEls.forEach(el => {
